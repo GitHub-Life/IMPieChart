@@ -1,0 +1,56 @@
+//
+//  ViewController.m
+//  IMPieChartDemo
+//
+//  Created by 万涛 on 2018/4/16.
+//  Copyright © 2018年 iMoon. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "IMPieChartView.h"
+#import "IMPieLayer.h"
+
+@interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet IMPieChartView *pieChartView;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _pieChartView.sectorWidth = 30;
+    _pieChartView.hollowRadius = 30;
+    _pieChartView.startAngle = -M_PI_2;
+    _pieChartView.animOffset = 10;
+    _pieChartView.animation = YES;
+    _pieChartView.descShowStyle = IMPieDescShowStyle1;
+    _pieChartView.order = NSOrderedDescending;
+//    _pieChartView.colors = @[[UIColor redColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], [UIColor blueColor], [UIColor cyanColor], [UIColor purpleColor]];
+    _pieChartView.colors = @[[UIColor blackColor], [UIColor whiteColor]];
+    _pieChartView.descArray = @[@"壹", @"贰", @"叁", @"肆", @"伍", @"陆", @"柒", @"捌", @"玖", @"拾"];
+    [_pieChartView setClickPieEvent:^(IMPieLayer *pieLayer) {
+        NSLog(@"isSelected = %d, index = %d, num = %@, percent = %@", pieLayer.isSelected, (int)pieLayer.index, pieLayer.num, pieLayer.percentStr);
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self randowRedraw];
+}
+
+- (IBAction)randowRedraw {
+    int count = arc4random() % 10 + 1;
+    NSMutableArray<NSNumber *> *numArray = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [numArray addObject:@(arc4random() % 100 + 1)];
+    }
+    _pieChartView.numArray = numArray;
+}
+
+- (IBAction)selectedNext {
+    _pieChartView.selectedIndex = (_pieChartView.selectedIndex + 1) % _pieChartView.numArray.count;
+}
+
+@end
