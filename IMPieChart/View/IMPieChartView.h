@@ -60,6 +60,10 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 @property (nonatomic, strong) NSArray<NSString *> *descArray;
 /** 描述文本颜色 */
 @property (nonatomic, copy) IBInspectable UIColor *descColor;
+/** 描述文本字体 */
+@property (nonatomic, copy) UIFont *descFont;
+/** 百分比文本字体 */
+@property (nonatomic, copy) UIFont *percentFont;
 
 /** 选中的扇形索引值(未选中任何扇形，值为-1) */
 @property (nonatomic, assign) NSInteger selectedIndex;

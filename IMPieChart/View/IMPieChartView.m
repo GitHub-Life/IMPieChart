@@ -345,20 +345,20 @@
     if (inflexionPoint.x <= self.centerSelf.x) {
         CGPoint endPoint = CGPointMake((self.centerSelf.x - _hollowRadius - _sectorWidth - DescStyle1Offset), inflexionPoint.y);
         [indexLinePath addLineToPoint:endPoint];
-        [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : DescStyle1Font, NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+        [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
         if (self.showDesc) {
             CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
-            [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace - descSize.width - DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : DescStyle1Font, NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
+            [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace - descSize.width - DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
         }
     } else {
         CGPoint endPoint = CGPointMake((self.centerSelf.x + _hollowRadius + _sectorWidth + DescStyle1Offset), inflexionPoint.y);
         [indexLinePath addLineToPoint:endPoint];
         if (self.showDesc) {
             CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
-            [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : DescStyle1Font, NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
-            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace + descSize.width + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : DescStyle1Font, NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+            [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
+            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace + descSize.width + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
         } else {
-            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : DescStyle1Font, NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
         }
     }
     CGContextSetStrokeColorWithColor(context, [self colorWithIndex:pieLayer.index].CGColor);
