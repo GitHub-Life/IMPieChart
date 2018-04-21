@@ -58,6 +58,8 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 @property (nonatomic, strong) NSArray<NSNumber *> *numArray;
 /** 数值的描述集合(如果此集合中的数量<numArray数量时,将不做显示) */
 @property (nonatomic, strong) NSArray<NSString *> *descArray;
+/** 描述文本颜色 */
+@property (nonatomic, copy) IBInspectable UIColor *descColor;
 
 /** 选中的扇形索引值(未选中任何扇形，值为-1) */
 @property (nonatomic, assign) NSInteger selectedIndex;
