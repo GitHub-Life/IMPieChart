@@ -1,5 +1,5 @@
 //
-//  IMPoint.h
+//  IMPiePoint.h
 //  IMPieChartDemo
 //
 //  Created by 万涛 on 2018/4/17.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IMPoint : NSObject
+@interface IMPiePoint : NSObject
 
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;

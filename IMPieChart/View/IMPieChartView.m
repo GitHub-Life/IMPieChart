@@ -9,9 +9,9 @@
 #import "IMPieChartView.h"
 #import "IMPieCalculator.h"
 #import "IMPieLayer.h"
-#import "UIView+Area.h"
-#import "UIView+Rect.h"
-#import "IMPoint.h"
+#import "UIView+IMArea.h"
+#import "UIView+IMRect.h"
+#import "IMPiePoint.h"
 
 #define DescStyle1Offset 10
 #define DescStyle1Font [UIFont systemFontOfSize:10]
@@ -81,7 +81,7 @@
         [_pieLayers addObject:pieLayer];
         startAngle = endAngle;
     }
-    if (_animation) {
+    if (_drawAnimation) {
         [self addAnimation];
     }
     [self setNeedsDisplay];
@@ -199,15 +199,15 @@
 /** 绘制 Style1 的描述 步骤1 */
 - (void)descShowStyle1DrawMethod1 {
     /** 将折点分不同区域先缓存起来，到最后再遍历绘制 */
-    NSMutableArray<IMPoint *> *firstQuadrantInflexionPoints = [NSMutableArray array];
-    NSMutableArray<IMPoint *> *secondQuadrantInflexionPoints = [NSMutableArray array];
-    NSMutableArray<IMPoint *> *thirdQuadrantInflexionPoints = [NSMutableArray array];
-    NSMutableArray<IMPoint *> *fourthQuadrantInflexionPoints = [NSMutableArray array];
+    NSMutableArray<IMPiePoint *> *firstQuadrantInflexionPoints = [NSMutableArray array];
+    NSMutableArray<IMPiePoint *> *secondQuadrantInflexionPoints = [NSMutableArray array];
+    NSMutableArray<IMPiePoint *> *thirdQuadrantInflexionPoints = [NSMutableArray array];
+    NSMutableArray<IMPiePoint *> *fourthQuadrantInflexionPoints = [NSMutableArray array];
     for (int i = 0; i < _pieLayers.count; i++) {
         IMPieLayer *pieLayer = _pieLayers[i];
         CGPoint inflexionPoint = [IMPieCalculator pointWithAngle:pieLayer.centerAngle radius:(_hollowRadius + _sectorWidth + DescStyle1Offset) center:self.centerSelf];
         CoordinateArea area = [self coordinateAreaWithPoint:inflexionPoint];
-        IMPoint *imPoint = [IMPoint point:inflexionPoint];
+        IMPiePoint *imPoint = [IMPiePoint point:inflexionPoint];
         imPoint.tag = i;
         imPoint.angle = pieLayer.centerAngle;
         // 当折点与上一个折点回出现绘制位置重合的时候，根据区所处区域分别向不同的方向偏移
@@ -240,7 +240,7 @@
     // 参考折点设置的区域为其实角度所在象限的前一个象限即可
     // 绘制第四象限的折点，将初始参考折点设置在第三象限
     CGPoint prevInflexionPoint = CGPointZero;
-    fourthQuadrantInflexionPoints = [fourthQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPoint *obj1, IMPoint *obj2) {
+    fourthQuadrantInflexionPoints = [fourthQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPiePoint *obj1, IMPiePoint *obj2) {
         if (obj1.angle < obj2.angle) {
             return NSOrderedDescending;
         } else if (obj1.angle > obj2.angle) {
@@ -248,7 +248,7 @@
         }
         return NSOrderedSame;
     }].mutableCopy;
-    for (IMPoint *point in fourthQuadrantInflexionPoints) {
+    for (IMPiePoint *point in fourthQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
         CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
@@ -266,7 +266,7 @@
     } else {
         prevInflexionPoint = CGPointMake(self.width, 0);
     }
-    firstQuadrantInflexionPoints = [firstQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPoint *obj1, IMPoint *obj2) {
+    firstQuadrantInflexionPoints = [firstQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPiePoint *obj1, IMPiePoint *obj2) {
         if (obj1.angle < obj2.angle) {
             return NSOrderedAscending;
         } else if (obj1.angle > obj2.angle) {
@@ -274,7 +274,7 @@
         }
         return NSOrderedSame;
     }].mutableCopy;
-    for (IMPoint *point in firstQuadrantInflexionPoints) {
+    for (IMPiePoint *point in firstQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
         CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
@@ -288,7 +288,7 @@
     
     // 绘制第二象限的折点，将初始参考折点设置在第一象限
     prevInflexionPoint = CGPointMake(self.width, self.height);
-    secondQuadrantInflexionPoints = [secondQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPoint *obj1, IMPoint *obj2) {
+    secondQuadrantInflexionPoints = [secondQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPiePoint *obj1, IMPiePoint *obj2) {
         if (obj1.angle < obj2.angle) {
             return NSOrderedDescending;
         } else if (obj1.angle > obj2.angle) {
@@ -296,7 +296,7 @@
         }
         return NSOrderedSame;
     }].mutableCopy;
-    for (IMPoint *point in secondQuadrantInflexionPoints) {
+    for (IMPiePoint *point in secondQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
         CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
@@ -314,7 +314,7 @@
     } else {
         prevInflexionPoint = CGPointMake(0, self.height);
     }
-    thirdQuadrantInflexionPoints = [thirdQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPoint *obj1, IMPoint *obj2) {
+    thirdQuadrantInflexionPoints = [thirdQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPiePoint *obj1, IMPiePoint *obj2) {
         if (obj1.angle < obj2.angle) {
             return NSOrderedAscending;
         } else if (obj1.angle > obj2.angle) {
@@ -322,7 +322,7 @@
         }
         return NSOrderedSame;
     }].mutableCopy;
-    for (IMPoint *point in thirdQuadrantInflexionPoints) {
+    for (IMPiePoint *point in thirdQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
         CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];

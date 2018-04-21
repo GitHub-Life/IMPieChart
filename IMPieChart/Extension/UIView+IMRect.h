@@ -1,14 +1,14 @@
 //
-//  UIView+Rect.h
-//  NiuYan
+//  UIView+IMRect.h
+//  IMPieChartDemo
 //
-//  Created by 万涛 on 2018/3/15.
-//  Copyright © 2018年 niuyan.com. All rights reserved.
+//  Created by 万涛 on 2018/4/21.
+//  Copyright © 2018年 iMoon. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Rect)
+@interface UIView (IMRect)
 
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;
@@ -19,11 +19,5 @@
 
 @property (nonatomic, assign) CGFloat centerX;
 @property (nonatomic, assign) CGFloat centerY;
-
-/** 添加单击手势 */
-- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action;
-
-/** 添加长按手势 */
-- (void)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action;
 
 @end

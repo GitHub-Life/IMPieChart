@@ -31,19 +31,19 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 @property (nonatomic, assign) CGFloat startAngle;
 
 /** 扇形的内外径差 */
-@property (nonatomic, assign) CGFloat sectorWidth;
+@property (nonatomic, assign) IBInspectable CGFloat sectorWidth;
 
 /** 空心半径 */
-@property (nonatomic, assign) CGFloat hollowRadius;
+@property (nonatomic, assign) IBInspectable CGFloat hollowRadius;
 
 /** 每个扇形之间的分隔距离 */
-@property (nonatomic, assign) CGFloat separatorWidth;
+@property (nonatomic, assign) IBInspectable CGFloat separatorWidth;
 
 /** 点击每个扇形时，扇形动画偏移量(若此值为0，则无偏移动画) */
-@property (nonatomic, assign) CGFloat animOffset;
+@property (nonatomic, assign) IBInspectable CGFloat animOffset;
 
 /** 是否动画绘制 */
-@property (nonatomic, assign) BOOL animation;
+@property (nonatomic, assign) IBInspectable BOOL drawAnimation;
 
 /** 数据的描述样式 */
 @property (nonatomic, assign) IMPieDescShowStyle descShowStyle;

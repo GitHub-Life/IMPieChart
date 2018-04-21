@@ -1,14 +1,14 @@
 //
-//  UIView+Rect.m
-//  NiuYan
+//  UIView+IMRect.m
+//  IMPieChartDemo
 //
-//  Created by 万涛 on 2018/3/15.
-//  Copyright © 2018年 niuyan.com. All rights reserved.
+//  Created by 万涛 on 2018/4/21.
+//  Copyright © 2018年 iMoon. All rights reserved.
 //
 
-#import "UIView+Rect.h"
+#import "UIView+IMRect.h"
 
-@implementation UIView (Rect)
+@implementation UIView (IMRect)
 
 -(void)setX:(CGFloat)x
 {
@@ -96,18 +96,6 @@
 
 -(CGFloat)centerY {
     return CGRectGetMidY(self.frame);
-}
-
-- (void)addTapGestureRecognizerWithTarget:(id)target action:(SEL)action {
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
-    [self setUserInteractionEnabled:YES];
-    [self addGestureRecognizer:tapGr];
-}
-
-- (void)addLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action {
-    UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:target action:action];
-    [self setUserInteractionEnabled:YES];
-    [self addGestureRecognizer:longPressGr];
 }
 
 @end

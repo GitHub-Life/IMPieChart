@@ -1,8 +1,8 @@
 //
-//  UIView+Area.h
+//  UIView+IMArea.h
 //  IMPieChartDemo
 //
-//  Created by 万涛 on 2018/4/17.
+//  Created by 万涛 on 2018/4/21.
 //  Copyright © 2018年 iMoon. All rights reserved.
 //
 
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, CoordinateArea) {
     CoordinateAxisPositiveY
 };
 
-@interface UIView (Area)
+@interface UIView (IMArea)
 
 @property (nonatomic, assign, readonly) CGPoint centerSelf;
 

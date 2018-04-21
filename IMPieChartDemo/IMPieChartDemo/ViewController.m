@@ -24,7 +24,7 @@
     _pieChartView.hollowRadius = 30;
     _pieChartView.startAngle = -M_PI_2;
     _pieChartView.animOffset = 10;
-    _pieChartView.animation = YES;
+    _pieChartView.drawAnimation = YES;
     _pieChartView.descShowStyle = IMPieDescShowStyle1;
     _pieChartView.order = NSOrderedDescending;
 //    _pieChartView.colors = @[[UIColor redColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], [UIColor blueColor], [UIColor cyanColor], [UIColor purpleColor]];

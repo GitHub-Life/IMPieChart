@@ -1,14 +1,14 @@
 //
-//  UIView+Area.m
+//  UIView+IMArea.m
 //  IMPieChartDemo
 //
-//  Created by 万涛 on 2018/4/17.
+//  Created by 万涛 on 2018/4/21.
 //  Copyright © 2018年 iMoon. All rights reserved.
 //
 
-#import "UIView+Area.h"
+#import "UIView+IMArea.h"
 
-@implementation UIView (Area)
+@implementation UIView (IMArea)
 
 - (CGPoint)centerSelf {
     return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);

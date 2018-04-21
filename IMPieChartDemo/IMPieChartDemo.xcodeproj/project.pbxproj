@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B76276D62086D1030033BD8E /* UIView+Rect.m in Sources */ = {isa = PBXBuildFile; fileRef = B76276D52086D1030033BD8E /* UIView+Rect.m */; };
 		B787DC53208494FD0051F4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC52208494FD0051F4E6 /* AppDelegate.m */; };
 		B787DC56208494FD0051F4E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC55208494FD0051F4E6 /* ViewController.m */; };
 		B787DC59208494FD0051F4E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B787DC57208494FD0051F4E6 /* Main.storyboard */; };
@@ -16,14 +15,13 @@
 		B787DC61208494FE0051F4E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC60208494FE0051F4E6 /* main.m */; };
 		B787DC732084994E0051F4E6 /* IMPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC722084994E0051F4E6 /* IMPieChartView.m */; };
 		B787DC762084B7940051F4E6 /* IMPieLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC752084B7940051F4E6 /* IMPieLayer.m */; };
+		B7956D4A208B0BC9003D5250 /* UIView+IMRect.m in Sources */ = {isa = PBXBuildFile; fileRef = B7956D49208B0BC9003D5250 /* UIView+IMRect.m */; };
+		B7956D4D208B0BD7003D5250 /* UIView+IMArea.m in Sources */ = {isa = PBXBuildFile; fileRef = B7956D4C208B0BD7003D5250 /* UIView+IMArea.m */; };
 		B7ABAAD120857AB300EBE4E0 /* IMPieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ABAAD020857AB300EBE4E0 /* IMPieCalculator.m */; };
-		B7ABAAD52085F63600EBE4E0 /* UIView+Area.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ABAAD42085F63600EBE4E0 /* UIView+Area.m */; };
-		B7ABAAD82086204700EBE4E0 /* IMPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ABAAD72086204700EBE4E0 /* IMPoint.m */; };
+		B7ABAAD82086204700EBE4E0 /* IMPiePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ABAAD72086204700EBE4E0 /* IMPiePoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B76276D42086D1030033BD8E /* UIView+Rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Rect.h"; sourceTree = "<group>"; };
-		B76276D52086D1030033BD8E /* UIView+Rect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Rect.m"; sourceTree = "<group>"; };
 		B787DC4E208494FD0051F4E6 /* IMPieChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMPieChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787DC51208494FD0051F4E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B787DC52208494FD0051F4E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -38,12 +36,14 @@
 		B787DC722084994E0051F4E6 /* IMPieChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMPieChartView.m; sourceTree = "<group>"; };
 		B787DC742084B7940051F4E6 /* IMPieLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMPieLayer.h; sourceTree = "<group>"; };
 		B787DC752084B7940051F4E6 /* IMPieLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMPieLayer.m; sourceTree = "<group>"; };
+		B7956D48208B0BC9003D5250 /* UIView+IMRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IMRect.h"; sourceTree = "<group>"; };
+		B7956D49208B0BC9003D5250 /* UIView+IMRect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMRect.m"; sourceTree = "<group>"; };
+		B7956D4B208B0BD7003D5250 /* UIView+IMArea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IMArea.h"; sourceTree = "<group>"; };
+		B7956D4C208B0BD7003D5250 /* UIView+IMArea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMArea.m"; sourceTree = "<group>"; };
 		B7ABAACF20857AB300EBE4E0 /* IMPieCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMPieCalculator.h; sourceTree = "<group>"; };
 		B7ABAAD020857AB300EBE4E0 /* IMPieCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMPieCalculator.m; sourceTree = "<group>"; };
-		B7ABAAD32085F63600EBE4E0 /* UIView+Area.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Area.h"; sourceTree = "<group>"; };
-		B7ABAAD42085F63600EBE4E0 /* UIView+Area.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Area.m"; sourceTree = "<group>"; };
-		B7ABAAD62086204700EBE4E0 /* IMPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMPoint.h; sourceTree = "<group>"; };
-		B7ABAAD72086204700EBE4E0 /* IMPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMPoint.m; sourceTree = "<group>"; };
+		B7ABAAD62086204700EBE4E0 /* IMPiePoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMPiePoint.h; sourceTree = "<group>"; };
+		B7ABAAD72086204700EBE4E0 /* IMPiePoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMPiePoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +122,8 @@
 			children = (
 				B7ABAACF20857AB300EBE4E0 /* IMPieCalculator.h */,
 				B7ABAAD020857AB300EBE4E0 /* IMPieCalculator.m */,
-				B7ABAAD62086204700EBE4E0 /* IMPoint.h */,
-				B7ABAAD72086204700EBE4E0 /* IMPoint.m */,
+				B7ABAAD62086204700EBE4E0 /* IMPiePoint.h */,
+				B7ABAAD72086204700EBE4E0 /* IMPiePoint.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,10 +142,10 @@
 		B7ABAAD22085F60600EBE4E0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B76276D42086D1030033BD8E /* UIView+Rect.h */,
-				B76276D52086D1030033BD8E /* UIView+Rect.m */,
-				B7ABAAD32085F63600EBE4E0 /* UIView+Area.h */,
-				B7ABAAD42085F63600EBE4E0 /* UIView+Area.m */,
+				B7956D48208B0BC9003D5250 /* UIView+IMRect.h */,
+				B7956D49208B0BC9003D5250 /* UIView+IMRect.m */,
+				B7956D4B208B0BD7003D5250 /* UIView+IMArea.h */,
+				B7956D4C208B0BD7003D5250 /* UIView+IMArea.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -220,13 +220,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7956D4D208B0BD7003D5250 /* UIView+IMArea.m in Sources */,
 				B7ABAAD120857AB300EBE4E0 /* IMPieCalculator.m in Sources */,
 				B787DC762084B7940051F4E6 /* IMPieLayer.m in Sources */,
-				B7ABAAD52085F63600EBE4E0 /* UIView+Area.m in Sources */,
 				B787DC56208494FD0051F4E6 /* ViewController.m in Sources */,
-				B7ABAAD82086204700EBE4E0 /* IMPoint.m in Sources */,
+				B7ABAAD82086204700EBE4E0 /* IMPiePoint.m in Sources */,
 				B787DC61208494FE0051F4E6 /* main.m in Sources */,
-				B76276D62086D1030033BD8E /* UIView+Rect.m in Sources */,
+				B7956D4A208B0BC9003D5250 /* UIView+IMRect.m in Sources */,
 				B787DC732084994E0051F4E6 /* IMPieChartView.m in Sources */,
 				B787DC53208494FD0051F4E6 /* AppDelegate.m in Sources */,
 			);
