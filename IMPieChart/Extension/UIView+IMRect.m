@@ -98,4 +98,8 @@
     return CGRectGetMidY(self.frame);
 }
 
+- (CGPoint)centerSelf {
+    return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+}
+
 @end

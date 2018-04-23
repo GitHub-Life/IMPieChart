@@ -65,6 +65,7 @@
         pieLayer.index = i;
         pieLayer.num = _numArray[i];
         pieLayer.percent = percents[i];
+        pieLayer.percentFractionalDigits = _percentFractionalDigits;
         if (self.showDesc) {
             pieLayer.desc = _descArray[i];
         }
@@ -207,30 +208,30 @@
         IMPieLayer *pieLayer = _pieLayers[i];
         CGPoint inflexionPoint = [IMPieCalculator pointWithAngle:pieLayer.centerAngle radius:(_hollowRadius + _sectorWidth + DescStyle1Offset) center:self.centerSelf];
         CoordinateArea area = [self coordinateAreaWithPoint:inflexionPoint];
-        IMPiePoint *imPoint = [IMPiePoint point:inflexionPoint];
-        imPoint.tag = i;
-        imPoint.angle = pieLayer.centerAngle;
+        IMPiePoint *imPiePoint = [IMPiePoint point:inflexionPoint];
+        imPiePoint.tag = i;
+        imPiePoint.angle = pieLayer.centerAngle;
         // 当折点与上一个折点回出现绘制位置重合的时候，根据区所处区域分别向不同的方向偏移
         switch (area) {
             case CoordinateAxisPositiveX:
             case CoordinateFirstQuadrant: {
                 // 第一象限(即View右下方区域),先缓存,后遍历绘制
-                [firstQuadrantInflexionPoints addObject:imPoint];
+                [firstQuadrantInflexionPoints addObject:imPiePoint];
             } break;
             case CoordinateAxisPositiveY:
             case CoordinateSecondQuadrant: {
                 // 第二象限(即View左下方区域),先缓存,后遍历绘制
-                [secondQuadrantInflexionPoints addObject:imPoint];
+                [secondQuadrantInflexionPoints addObject:imPiePoint];
             } break;
             case CoordinateAxisNegativeX:
             case CoordinateThirdQuadrant: {
                 // 第三象限(即View右下方区域),先缓存,后遍历绘制
-                [thirdQuadrantInflexionPoints addObject:imPoint];
+                [thirdQuadrantInflexionPoints addObject:imPiePoint];
             } break;
             case CoordinateAxisNegativeY:
             case CoordinateFourthQuadrant: {
                 // 第四象限(即View右上方区域),先缓存,后遍历绘制
-                [fourthQuadrantInflexionPoints addObject:imPoint];
+                [fourthQuadrantInflexionPoints addObject:imPiePoint];
             } break;
             case CoordinateOrigin: break;
         }
@@ -251,7 +252,7 @@
     for (IMPiePoint *point in fourthQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
-        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}];
         // 与上一折点出现绘制重合时，向上偏移
         while ([self needOffset:inflexionPoint prevInflexionPoint:prevInflexionPoint textSize:percentStrSize]) {
             inflexionPoint.y -= 1;
@@ -277,7 +278,7 @@
     for (IMPiePoint *point in firstQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
-        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}];
         // 与上一折点出现绘制重合时，向下偏移
         while ([self needOffset:inflexionPoint prevInflexionPoint:prevInflexionPoint textSize:percentStrSize]) {
             inflexionPoint.y += 1;
@@ -299,7 +300,7 @@
     for (IMPiePoint *point in secondQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
-        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}];
         // 与上一折点出现绘制重合时，向下偏移
         while ([self needOffset:inflexionPoint prevInflexionPoint:prevInflexionPoint textSize:percentStrSize]) {
             inflexionPoint.y += 1;
@@ -325,7 +326,7 @@
     for (IMPiePoint *point in thirdQuadrantInflexionPoints) {
         CGPoint inflexionPoint = point.cgPoint;
         IMPieLayer *pieLayer = _pieLayers[point.tag];
-        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+        CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}];
         // 与上一折点出现绘制重合时，向上偏移
         while ([self needOffset:inflexionPoint prevInflexionPoint:prevInflexionPoint textSize:percentStrSize]) {
             inflexionPoint.y -= 1;
@@ -341,20 +342,20 @@
     UIBezierPath *indexLinePath = [UIBezierPath bezierPath];
     [indexLinePath moveToPoint:[IMPieCalculator pointWithAngle:pieLayer.centerAngle radius:(_hollowRadius + _sectorWidth) center:self.centerSelf]];
     [indexLinePath addLineToPoint:inflexionPoint];
-    CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+    CGSize percentStrSize = [pieLayer.percentStr sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}];
     if (inflexionPoint.x <= self.centerSelf.x) {
         CGPoint endPoint = CGPointMake((self.centerSelf.x - _hollowRadius - _sectorWidth - DescStyle1Offset), inflexionPoint.y);
         [indexLinePath addLineToPoint:endPoint];
         [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
         if (self.showDesc) {
-            CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+            CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font)}];
             [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace - descSize.width - DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
         }
     } else {
         CGPoint endPoint = CGPointMake((self.centerSelf.x + _hollowRadius + _sectorWidth + DescStyle1Offset), inflexionPoint.y);
         [indexLinePath addLineToPoint:endPoint];
         if (self.showDesc) {
-            CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : DescStyle1Font}];
+            CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font)}];
             [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
             [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace + descSize.width + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
         } else {

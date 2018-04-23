@@ -64,6 +64,8 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 @property (nonatomic, copy) UIFont *descFont;
 /** 百分比文本字体 */
 @property (nonatomic, copy) UIFont *percentFont;
+/** 百分数最多保留位数 */
+@property (nonatomic, assign) IBInspectable int percentFractionalDigits;
 
 /** 选中的扇形索引值(未选中任何扇形，值为-1) */
 @property (nonatomic, assign) NSInteger selectedIndex;

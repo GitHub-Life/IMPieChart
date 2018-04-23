@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, copy) NSNumber *num;
 @property (nonatomic, copy) NSNumber *percent;
+@property (nonatomic, assign) int percentFractionalDigits;
 @property (nonatomic, copy, readonly) NSString *percentStr;
 @property (nonatomic, copy) NSString *desc;
 

@@ -7,12 +7,9 @@
 //
 
 #import "UIView+IMArea.h"
+#import "UIView+IMRect.h"
 
 @implementation UIView (IMArea)
-
-- (CGPoint)centerSelf {
-    return CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-}
 
 - (CoordinateArea)coordinateAreaWithPoint:(CGPoint)point {
     CGPoint center = self.centerSelf;

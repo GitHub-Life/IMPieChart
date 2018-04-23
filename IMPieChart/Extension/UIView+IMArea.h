@@ -22,8 +22,6 @@ typedef NS_ENUM(NSInteger, CoordinateArea) {
 
 @interface UIView (IMArea)
 
-@property (nonatomic, assign, readonly) CGPoint centerSelf;
-
 /** 以View中心点位坐标原点,判断point所在坐标区域 */
 - (CoordinateArea)coordinateAreaWithPoint:(CGPoint)point;
 

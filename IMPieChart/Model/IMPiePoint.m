@@ -12,17 +12,17 @@
 @implementation IMPiePoint
 
 + (instancetype)point:(CGFloat)x :(CGFloat)y {
-    IMPiePoint *point = [[IMPiePoint alloc] init];
-    point.x = x;
-    point.y = y;
-    return point;
+    IMPiePoint *imPiePoint = [[IMPiePoint alloc] init];
+    imPiePoint.x = x;
+    imPiePoint.y = y;
+    return imPiePoint;
 }
 
 + (instancetype)point:(CGPoint)point {
-    IMPiePoint *imPoint = [[IMPiePoint alloc] init];
-    imPoint.x = point.x;
-    imPoint.y = point.y;
-    return imPoint;
+    IMPiePoint *imPiePoint = [[IMPiePoint alloc] init];
+    imPiePoint.x = point.x;
+    imPiePoint.y = point.y;
+    return imPiePoint;
 }
 
 - (CGPoint)cgPoint {

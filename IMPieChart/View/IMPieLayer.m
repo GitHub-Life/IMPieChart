@@ -15,7 +15,11 @@
 }
 
 - (NSString *)percentStr {
-    return [NSString stringWithFormat:@"%.2f%%", _percent.floatValue * 100];
+    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+    nf.numberStyle = NSNumberFormatterPercentStyle;
+    nf.maximumFractionDigits = _percentFractionalDigits;
+    nf.minimumFractionDigits = _percentFractionalDigits;
+    return [nf stringFromNumber:_percent];
 }
 
 @end
