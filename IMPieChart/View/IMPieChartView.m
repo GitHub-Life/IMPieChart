@@ -57,10 +57,12 @@
         return;
     }
     NSArray<NSNumber *> *percents = [IMPieCalculator percentArrayWithDataArray:_numArray order:_order];
-    
     CGFloat startAngle = _startAngle;
     
     for (int i = 0; i < percents.count; i++) {
+        if (percents[i].doubleValue == 0) {
+            continue;
+        }
         IMPieLayer *pieLayer = [IMPieLayer layer];
         pieLayer.index = i;
         pieLayer.num = _numArray[i];
@@ -96,6 +98,13 @@
         CGFloat offsetAfterStartAngle1 = [IMPieCalculator offsetAngleWithAngle:startAngle radius:(_hollowRadius + _sectorWidth) separatorWidth:_separatorWidth clockwise:YES];
         CGFloat offsetAfterEndAngle = [IMPieCalculator offsetAngleWithAngle:endAngle radius:_hollowRadius separatorWidth:_separatorWidth clockwise:NO];
         CGFloat offsetAfterEndAngle1 = [IMPieCalculator offsetAngleWithAngle:endAngle radius:(_hollowRadius + _sectorWidth) separatorWidth:_separatorWidth clockwise:NO];
+        
+        if (offsetAfterEndAngle < offsetAfterStartAngle) {
+            offsetAfterEndAngle = offsetAfterStartAngle;
+        }
+        if (offsetAfterEndAngle1 < offsetAfterStartAngle1) {
+            offsetAfterEndAngle1 = offsetAfterStartAngle1;
+        }
         [piePath moveToPoint:[IMPieCalculator pointWithAngle:offsetAfterStartAngle radius:_hollowRadius center:self.centerSelf]];
         [piePath addArcWithCenter:self.centerSelf radius:_hollowRadius startAngle:offsetAfterStartAngle endAngle:offsetAfterEndAngle clockwise:YES];
         [piePath addLineToPoint:[IMPieCalculator pointWithAngle:offsetAfterEndAngle1 radius:(_hollowRadius + _sectorWidth) center:self.centerSelf]];

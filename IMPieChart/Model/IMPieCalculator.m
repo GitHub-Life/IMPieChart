@@ -25,7 +25,7 @@
             return NSOrderedSame;
         }];
     }
-    float sum = [[sortDataArray valueForKeyPath:@"@sum.doubleValue"] doubleValue];
+    double sum = [[sortDataArray valueForKeyPath:@"@sum.doubleValue"] doubleValue];
     NSMutableArray<NSNumber *> *percentArray = [NSMutableArray array];
     for (NSNumber *num in sortDataArray) {
         [percentArray addObject:@(num.floatValue / sum)];

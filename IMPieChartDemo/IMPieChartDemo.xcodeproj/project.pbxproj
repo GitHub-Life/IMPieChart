@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B75111C420A1964500D93B18 /* UIView+IMArea.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111B720A1964500D93B18 /* UIView+IMArea.m */; };
+		B75111C520A1964500D93B18 /* UIView+IMRect.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111B820A1964500D93B18 /* UIView+IMRect.m */; };
+		B75111C620A1964500D93B18 /* IMPiePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111BC20A1964500D93B18 /* IMPiePoint.m */; };
+		B75111C720A1964500D93B18 /* IMPieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111BE20A1964500D93B18 /* IMPieCalculator.m */; };
+		B75111C820A1964500D93B18 /* IMPieLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111C020A1964500D93B18 /* IMPieLayer.m */; };
+		B75111C920A1964500D93B18 /* IMPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75111C320A1964500D93B18 /* IMPieChartView.m */; };
 		B787DC53208494FD0051F4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC52208494FD0051F4E6 /* AppDelegate.m */; };
 		B787DC56208494FD0051F4E6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC55208494FD0051F4E6 /* ViewController.m */; };
 		B787DC59208494FD0051F4E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B787DC57208494FD0051F4E6 /* Main.storyboard */; };
 		B787DC5B208494FE0051F4E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B787DC5A208494FE0051F4E6 /* Assets.xcassets */; };
 		B787DC5E208494FE0051F4E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B787DC5C208494FE0051F4E6 /* LaunchScreen.storyboard */; };
 		B787DC61208494FE0051F4E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B787DC60208494FE0051F4E6 /* main.m */; };
-		B7E2C0A6208D76EC009299CA /* UIView+IMArea.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C099208D76EC009299CA /* UIView+IMArea.m */; };
-		B7E2C0A7208D76EC009299CA /* UIView+IMRect.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C09A208D76EC009299CA /* UIView+IMRect.m */; };
-		B7E2C0A8208D76EC009299CA /* IMPiePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C09E208D76EC009299CA /* IMPiePoint.m */; };
-		B7E2C0A9208D76EC009299CA /* IMPieCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C0A0208D76EC009299CA /* IMPieCalculator.m */; };
-		B7E2C0AA208D76EC009299CA /* IMPieLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C0A2208D76EC009299CA /* IMPieLayer.m */; };
-		B7E2C0AB208D76EC009299CA /* IMPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E2C0A5208D76EC009299CA /* IMPieChartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B75111B620A1964500D93B18 /* UIView+IMRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IMRect.h"; sourceTree = "<group>"; };
+		B75111B720A1964500D93B18 /* UIView+IMArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMArea.m"; sourceTree = "<group>"; };
+		B75111B820A1964500D93B18 /* UIView+IMRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMRect.m"; sourceTree = "<group>"; };
+		B75111B920A1964500D93B18 /* UIView+IMArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IMArea.h"; sourceTree = "<group>"; };
+		B75111BB20A1964500D93B18 /* IMPieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieCalculator.h; sourceTree = "<group>"; };
+		B75111BC20A1964500D93B18 /* IMPiePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPiePoint.m; sourceTree = "<group>"; };
+		B75111BD20A1964500D93B18 /* IMPiePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPiePoint.h; sourceTree = "<group>"; };
+		B75111BE20A1964500D93B18 /* IMPieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieCalculator.m; sourceTree = "<group>"; };
+		B75111C020A1964500D93B18 /* IMPieLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieLayer.m; sourceTree = "<group>"; };
+		B75111C120A1964500D93B18 /* IMPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieChartView.h; sourceTree = "<group>"; };
+		B75111C220A1964500D93B18 /* IMPieLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieLayer.h; sourceTree = "<group>"; };
+		B75111C320A1964500D93B18 /* IMPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieChartView.m; sourceTree = "<group>"; };
 		B787DC4E208494FD0051F4E6 /* IMPieChartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMPieChartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787DC51208494FD0051F4E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B787DC52208494FD0051F4E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -32,18 +44,6 @@
 		B787DC5D208494FE0051F4E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B787DC5F208494FE0051F4E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B787DC60208494FE0051F4E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B7E2C098208D76EC009299CA /* UIView+IMRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IMRect.h"; sourceTree = "<group>"; };
-		B7E2C099208D76EC009299CA /* UIView+IMArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMArea.m"; sourceTree = "<group>"; };
-		B7E2C09A208D76EC009299CA /* UIView+IMRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IMRect.m"; sourceTree = "<group>"; };
-		B7E2C09B208D76EC009299CA /* UIView+IMArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IMArea.h"; sourceTree = "<group>"; };
-		B7E2C09D208D76EC009299CA /* IMPieCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieCalculator.h; sourceTree = "<group>"; };
-		B7E2C09E208D76EC009299CA /* IMPiePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPiePoint.m; sourceTree = "<group>"; };
-		B7E2C09F208D76EC009299CA /* IMPiePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPiePoint.h; sourceTree = "<group>"; };
-		B7E2C0A0208D76EC009299CA /* IMPieCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieCalculator.m; sourceTree = "<group>"; };
-		B7E2C0A2208D76EC009299CA /* IMPieLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieLayer.m; sourceTree = "<group>"; };
-		B7E2C0A3208D76EC009299CA /* IMPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieChartView.h; sourceTree = "<group>"; };
-		B7E2C0A4208D76EC009299CA /* IMPieLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPieLayer.h; sourceTree = "<group>"; };
-		B7E2C0A5208D76EC009299CA /* IMPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPieChartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +57,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B75111B420A1964500D93B18 /* IMPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				B75111B520A1964500D93B18 /* Extension */,
+				B75111BA20A1964500D93B18 /* Model */,
+				B75111BF20A1964500D93B18 /* View */,
+			);
+			name = IMPieChart;
+			path = ../../IMPieChart;
+			sourceTree = "<group>";
+		};
+		B75111B520A1964500D93B18 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B75111B620A1964500D93B18 /* UIView+IMRect.h */,
+				B75111B720A1964500D93B18 /* UIView+IMArea.m */,
+				B75111B820A1964500D93B18 /* UIView+IMRect.m */,
+				B75111B920A1964500D93B18 /* UIView+IMArea.h */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B75111BA20A1964500D93B18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B75111BB20A1964500D93B18 /* IMPieCalculator.h */,
+				B75111BC20A1964500D93B18 /* IMPiePoint.m */,
+				B75111BD20A1964500D93B18 /* IMPiePoint.h */,
+				B75111BE20A1964500D93B18 /* IMPieCalculator.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B75111BF20A1964500D93B18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B75111C020A1964500D93B18 /* IMPieLayer.m */,
+				B75111C120A1964500D93B18 /* IMPieChartView.h */,
+				B75111C220A1964500D93B18 /* IMPieLayer.h */,
+				B75111C320A1964500D93B18 /* IMPieChartView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B787DC45208494FD0051F4E6 = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +120,7 @@
 		B787DC50208494FD0051F4E6 /* IMPieChartDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B7E2C096208D76EC009299CA /* IMPieChart */,
+				B75111B420A1964500D93B18 /* IMPieChart */,
 				B787DC68208495A60051F4E6 /* GlobalInstance */,
 				B787DC672084956E0051F4E6 /* Resources */,
 				B787DC54208494FD0051F4E6 /* ViewController.h */,
@@ -104,50 +148,6 @@
 				B787DC52208494FD0051F4E6 /* AppDelegate.m */,
 			);
 			path = GlobalInstance;
-			sourceTree = "<group>";
-		};
-		B7E2C096208D76EC009299CA /* IMPieChart */ = {
-			isa = PBXGroup;
-			children = (
-				B7E2C097208D76EC009299CA /* Extension */,
-				B7E2C09C208D76EC009299CA /* Model */,
-				B7E2C0A1208D76EC009299CA /* View */,
-			);
-			name = IMPieChart;
-			path = ../../IMPieChart;
-			sourceTree = "<group>";
-		};
-		B7E2C097208D76EC009299CA /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B7E2C098208D76EC009299CA /* UIView+IMRect.h */,
-				B7E2C099208D76EC009299CA /* UIView+IMArea.m */,
-				B7E2C09A208D76EC009299CA /* UIView+IMRect.m */,
-				B7E2C09B208D76EC009299CA /* UIView+IMArea.h */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		B7E2C09C208D76EC009299CA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B7E2C09D208D76EC009299CA /* IMPieCalculator.h */,
-				B7E2C09E208D76EC009299CA /* IMPiePoint.m */,
-				B7E2C09F208D76EC009299CA /* IMPiePoint.h */,
-				B7E2C0A0208D76EC009299CA /* IMPieCalculator.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B7E2C0A1208D76EC009299CA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B7E2C0A2208D76EC009299CA /* IMPieLayer.m */,
-				B7E2C0A3208D76EC009299CA /* IMPieChartView.h */,
-				B7E2C0A4208D76EC009299CA /* IMPieLayer.h */,
-				B7E2C0A5208D76EC009299CA /* IMPieChartView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,13 +220,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7E2C0AA208D76EC009299CA /* IMPieLayer.m in Sources */,
-				B7E2C0A9208D76EC009299CA /* IMPieCalculator.m in Sources */,
+				B75111C820A1964500D93B18 /* IMPieLayer.m in Sources */,
+				B75111C720A1964500D93B18 /* IMPieCalculator.m in Sources */,
 				B787DC56208494FD0051F4E6 /* ViewController.m in Sources */,
-				B7E2C0A8208D76EC009299CA /* IMPiePoint.m in Sources */,
-				B7E2C0A7208D76EC009299CA /* UIView+IMRect.m in Sources */,
-				B7E2C0AB208D76EC009299CA /* IMPieChartView.m in Sources */,
-				B7E2C0A6208D76EC009299CA /* UIView+IMArea.m in Sources */,
+				B75111C620A1964500D93B18 /* IMPiePoint.m in Sources */,
+				B75111C520A1964500D93B18 /* UIView+IMRect.m in Sources */,
+				B75111C920A1964500D93B18 /* IMPieChartView.m in Sources */,
+				B75111C420A1964500D93B18 /* UIView+IMArea.m in Sources */,
 				B787DC61208494FE0051F4E6 /* main.m in Sources */,
 				B787DC53208494FD0051F4E6 /* AppDelegate.m in Sources */,
 			);
