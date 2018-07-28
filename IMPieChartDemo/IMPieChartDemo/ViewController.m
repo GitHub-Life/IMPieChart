@@ -13,6 +13,7 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet IMPieChartView *pieChartView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pieChartViewHeight;
 
 @end
 
@@ -51,6 +52,36 @@
 
 - (IBAction)selectedNext {
     _pieChartView.selectedIndex = (_pieChartView.selectedIndex + 1) % _pieChartView.numArray.count;
+}
+
+- (IBAction)needIncreaseHeight {
+    _pieChartView.numArray = @[@99, @0.2, @0.3, @0.1, @0.4];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_pieChartView addObserver:self forKeyPath:@"needIncreaseHeight" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_pieChartView removeObserver:self forKeyPath:@"needIncreaseHeight"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (object == _pieChartView && [keyPath isEqualToString:@"needIncreaseHeight"]) {
+        CGFloat newValue = [change[@"new"] doubleValue];
+        if (newValue > 0) {
+            _pieChartViewHeight.constant += newValue * 2;
+            __weak typeof(self) weakSelf = self;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.pieChartView setNeedsDisplay];
+            });
+        }
+    }
+    NSLog(@" - keyPath = %@", keyPath);
+    NSLog(@" - object = %@", object);
+    NSLog(@" - change = %@", change);
 }
 
 @end

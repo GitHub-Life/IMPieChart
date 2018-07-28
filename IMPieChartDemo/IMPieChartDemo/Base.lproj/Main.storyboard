@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,14 +22,19 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVM-fV-WMH" customClass="IMPieChartView">
-                                        <rect key="frame" x="0.0" y="198.5" width="375" height="250"/>
+                                        <rect key="frame" x="0.0" y="233.5" width="375" height="180"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="A3I-RP-7c0"/>
+                                            <constraint firstAttribute="height" constant="180" id="A3I-RP-7c0"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="percentFractionalDigits">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qjh-Ht-HHg">
-                                        <rect key="frame" x="20" y="458.5" width="335" height="40"/>
+                                        <rect key="frame" x="20" y="423.5" width="335" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXW-j7-Dob">
                                                 <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
@@ -75,13 +80,34 @@
                                             <constraint firstItem="Sw5-ee-xM3" firstAttribute="width" secondItem="ZXW-j7-Dob" secondAttribute="width" id="xJK-t3-zfN"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NH8-H7-MQc">
+                                        <rect key="frame" x="20" y="483.5" width="335" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kZ8-fi-Fk1"/>
+                                        </constraints>
+                                        <state key="normal" title="Need Increase Height">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="needIncreaseHeight" destination="BYZ-38-t0r" eventType="touchUpInside" id="yoW-1B-wUQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="OVM-fV-WMH" secondAttribute="trailing" id="0hz-S2-6Fp"/>
                                     <constraint firstAttribute="trailing" secondItem="Qjh-Ht-HHg" secondAttribute="trailing" constant="20" id="6pj-0r-EhK"/>
                                     <constraint firstItem="OVM-fV-WMH" firstAttribute="leading" secondItem="BSE-9q-s1P" secondAttribute="leading" id="Ew8-VN-N4p"/>
+                                    <constraint firstItem="NH8-H7-MQc" firstAttribute="top" secondItem="Qjh-Ht-HHg" secondAttribute="bottom" constant="20" id="Gnh-Uo-XW2"/>
+                                    <constraint firstAttribute="trailing" secondItem="NH8-H7-MQc" secondAttribute="trailing" constant="20" id="HSO-uu-UcA"/>
                                     <constraint firstItem="OVM-fV-WMH" firstAttribute="centerY" secondItem="BSE-9q-s1P" secondAttribute="centerY" id="Q8f-31-IlR"/>
+                                    <constraint firstItem="NH8-H7-MQc" firstAttribute="leading" secondItem="BSE-9q-s1P" secondAttribute="leading" constant="20" id="Rye-Fg-Tl1"/>
                                     <constraint firstItem="Qjh-Ht-HHg" firstAttribute="leading" secondItem="BSE-9q-s1P" secondAttribute="leading" constant="20" id="cgH-PE-I4e"/>
                                     <constraint firstItem="Qjh-Ht-HHg" firstAttribute="top" secondItem="OVM-fV-WMH" secondAttribute="bottom" constant="10" id="vHR-UL-sSs"/>
                                 </constraints>
@@ -98,6 +124,7 @@
                     </view>
                     <connections>
                         <outlet property="pieChartView" destination="OVM-fV-WMH" id="cTW-nb-MEj"/>
+                        <outlet property="pieChartViewHeight" destination="A3I-RP-7c0" id="c89-od-4gn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
