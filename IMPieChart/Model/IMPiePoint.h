@@ -21,7 +21,6 @@
 
 - (CGPoint)cgPoint;
 
-
 /** 以点所在View中心点为坐标原点,而得的angle(弧度制) */
 @property (nonatomic, assign) CGFloat angle;
 

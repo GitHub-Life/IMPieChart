@@ -37,7 +37,7 @@
 
 - (void)setNumArray:(NSArray<NSNumber *> *)numArray {
     _numArray = numArray;
-    [self draw];
+    [self setNeedsDisplay];
 }
 
 - (void)didMoveToWindow {
@@ -87,7 +87,6 @@
     if (_drawAnimation) {
         [self addAnimation];
     }
-    [self setNeedsDisplay];
 }
 
 #pragma mark - 扇形的 BezierPath
@@ -196,10 +195,17 @@
 #pragma mark - 绘制描述文本
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    if (!_pieLayers) {
+    
+    [self draw];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClearRect(context, rect);
+    if (!_pieLayers || !_pieLayers.count) {
+        UIBezierPath *path = [self sectorPathWithStartAngle:0 endAngle:M_PI * 2];
+        [[UIColor colorWithWhite:0 alpha:0.3] setFill];
+        [path fill];
         return;
     }
-    CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
     if (_descShowStyle == IMPieDescShowStyle1) {
         [self descShowStyle1DrawMethod1];
     }
@@ -246,8 +252,10 @@
         }
     }
     
+    CGFloat highestPointY = self.height;
+    CGFloat lowestPointY = 0;
     // 这里之所以根据起始区域设置最初的参考折点的区域，是为了防止第一个扇形的角度超过π而出现绘制超出显示范围
-    // 参考折点设置的区域为其实角度所在象限的前一个象限即可
+    // 参考折点设置的区域为其角度所在象限的前一个象限即可
     // 绘制第四象限的折点，将初始参考折点设置在第三象限
     CGPoint prevInflexionPoint = CGPointZero;
     fourthQuadrantInflexionPoints = [fourthQuadrantInflexionPoints sortedArrayUsingComparator:^NSComparisonResult(IMPiePoint *obj1, IMPiePoint *obj2) {
@@ -269,6 +277,7 @@
         [self descShowStyle1DrawMethod2With:inflexionPoint pieLayer:pieLayer];
         prevInflexionPoint = inflexionPoint;
     }
+    highestPointY = MIN(highestPointY, prevInflexionPoint.y);
     
     // 绘制第一象限的折点，将初始参考折点为第四象限角度最大的折点, 否则将其设置为第四象限任意点
     if (fourthQuadrantInflexionPoints.count) {
@@ -295,6 +304,7 @@
         [self descShowStyle1DrawMethod2With:inflexionPoint pieLayer:pieLayer];
         prevInflexionPoint = inflexionPoint;
     }
+    lowestPointY = MAX(lowestPointY, prevInflexionPoint.y);
     
     // 绘制第二象限的折点，将初始参考折点设置在第一象限
     prevInflexionPoint = CGPointMake(self.width, self.height);
@@ -317,6 +327,7 @@
         [self descShowStyle1DrawMethod2With:inflexionPoint pieLayer:pieLayer];
         prevInflexionPoint = inflexionPoint;
     }
+    lowestPointY = MAX(lowestPointY, prevInflexionPoint.y);
     
     // 绘制第三象限的折点, 将初始参考折点为第二限角度最大的折点, 否则将其设置为第二象限任意点
     if (secondQuadrantInflexionPoints.count) {
@@ -343,6 +354,17 @@
         [self descShowStyle1DrawMethod2With:inflexionPoint pieLayer:pieLayer];
         prevInflexionPoint = inflexionPoint;
     }
+    highestPointY = MIN(highestPointY, prevInflexionPoint.y);
+    
+    CGFloat needIncreaseHeight = 0;
+    CGFloat textHeight = [@"0" sizeWithAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font)}].height;
+    if (highestPointY != 0 && highestPointY - textHeight / 2 < 0) {
+        needIncreaseHeight += -(highestPointY - textHeight / 2);
+    }
+    if (lowestPointY != self.height && lowestPointY + textHeight / 2 > self.height) {
+        needIncreaseHeight += lowestPointY + textHeight / 2 - self.height;
+    }
+    self.needIncreaseHeight = needIncreaseHeight;
 }
 
 /** 绘制 Style1 的描述 步骤2 */
@@ -355,7 +377,7 @@
     if (inflexionPoint.x <= self.centerSelf.x) {
         CGPoint endPoint = CGPointMake((self.centerSelf.x - _hollowRadius - _sectorWidth - DescStyle1Offset), inflexionPoint.y);
         [indexLinePath addLineToPoint:endPoint];
-        [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+        [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : (self.dataTextColor ?: [self colorWithIndex:pieLayer.index])}];
         if (self.showDesc) {
             CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font)}];
             [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x - percentStrSize.width - DescSpace - descSize.width - DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
@@ -366,9 +388,9 @@
         if (self.showDesc) {
             CGSize descSize = [_descArray[pieLayer.index] sizeWithAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font)}];
             [_descArray[pieLayer.index] drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - descSize.height / 2) withAttributes:@{NSFontAttributeName : (_descFont ?: DescStyle1Font), NSForegroundColorAttributeName : (_descColor ?: [UIColor darkTextColor])}];
-            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace + descSize.width + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace + descSize.width + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName :  (self.dataTextColor ?: [self colorWithIndex:pieLayer.index])}];
         } else {
-            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName : [self colorWithIndex:pieLayer.index]}];
+            [pieLayer.percentStr drawAtPoint:CGPointMake((endPoint.x + DescSpace), endPoint.y - percentStrSize.height / 2) withAttributes:@{NSFontAttributeName : (_percentFont ?: DescStyle1Font), NSForegroundColorAttributeName :  (self.dataTextColor ?: [self colorWithIndex:pieLayer.index])}];
         }
     }
     CGContextSetStrokeColorWithColor(context, [self colorWithIndex:pieLayer.index].CGColor);

@@ -56,6 +56,8 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 
 /** 设置此值 即开始绘制饼状图 */
 @property (nonatomic, strong) NSArray<NSNumber *> *numArray;
+/** 数据文本颜色，若此值为nil，则取colors中的值 */
+@property (nonatomic, copy) IBInspectable UIColor *dataTextColor;
 /** 数值的描述集合(如果此集合中的数量<numArray数量时,将不做显示) */
 @property (nonatomic, strong) NSArray<NSString *> *descArray;
 /** 描述文本颜色 */
@@ -69,5 +71,7 @@ typedef void(^ClickPieBlock)(IMPieLayer *pieLayer);
 
 /** 选中的扇形索引值(未选中任何扇形，值为-1) */
 @property (nonatomic, assign) NSInteger selectedIndex;
+
+@property (nonatomic, assign) CGFloat needIncreaseHeight;
 
 @end

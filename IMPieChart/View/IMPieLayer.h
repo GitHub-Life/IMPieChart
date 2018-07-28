@@ -23,5 +23,4 @@
 @property (nonatomic, copy, readonly) NSString *percentStr;
 @property (nonatomic, copy) NSString *desc;
 
-
 @end
